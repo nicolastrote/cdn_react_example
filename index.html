@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>CDN REACT EXAMPLE</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+  <!-- REACT & BABEL -->
+  <script src="https://unpkg.com/react@latest/umd/react.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@latest/babel.min.js" crossorigin="anonymous"></script>
+  <!-- Material UI & LIBRARIES -->
+  <script src="https://unpkg.com/@material-ui/core@latest/umd/material-ui.development.js"
+    crossorigin="anonymous"></script>
+  <!-- Fonts to support Material UI -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <!-- Icons to support Material UI -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <!-- CLSX -->
+  <script src="https://cdn.jsdelivr.net/npm/clsx@1.1.1/dist/clsx.min.js"></script>
+  <!-- REQUIREJS to fetch image -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const {
+      Box,
+      Button,
+      Card,
+      CardActionArea,
+      CardActions,
+      CardContent,
+      CardMedia,
+      colors,
+      createMuiTheme,
+      CssBaseline,
+      Link,
+      makeStyles,
+      SvgIcon,
+      ThemeProvider,
+      Typography,
+    } = MaterialUI;
+
+    // Create a theme instance.
+    const theme = createMuiTheme({
+      palette: {
+        primary: {
+          main: '#556cd6',
+        },
+        secondary: {
+          main: '#19857b',
+        },
+        custom: {
+          pink: '#e64ed4',
+        },
+        error: {
+          main: colors.red.A400,
+        },
+        background: {
+          default: '#fff',
+        },
+      }
+    });
+
+    const useStyles = makeStyles(theme => ({
+      box: {
+        margin: 50,
+      },
+      root: {
+        margin: theme.spacing(6, 0, 3),
+      },
+      lightBulb: {
+        verticalAlign: 'middle',
+        marginRight: theme.spacing(1),
+      },
+      heart: {
+        color: theme.palette.custom.pink,
+      },
+      card: {
+        backgroundColor: '#fAfAfA',
+      },
+      media: {
+        height: 200,
+        width: 400,
+      }
+    }));
+
+    function LightBulbIcon(props) {
+      return (
+        <SvgIcon {...props}>
+          <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z" />
+        </SvgIcon>
+      );
+    }
+
+    function Header() {
+      return (
+        <Typography color="primary" variant='h4' align='center' gutterBottom>
+          CDN REACT & MATERIAL UI EXAMPLE
+        </Typography>
+      );
+    }
+
+    function InfoRender() {
+      const classes = useStyles();
+      return (
+        <Typography className={classes.root} color="secondary" align="center">
+          <LightBulbIcon className={classes.lightBulb} />
+          {' '}Here is the places to learn more : {' '}
+          <Link href="https://reactjs.org">React</Link>
+          {' '} And {' '}
+          <Link href="https://material-ui.com/getting-started/">Material UI</Link>
+          {' '}with all there documentation.{' '}
+        </Typography>
+      );
+    }
+
+    function Heart() {
+      const classes = useStyles();
+      return (
+        <span className={classes.heart}>{'♥'}</span>
+      );
+    }
+
+    function Copyright() {
+      const classes = useStyles();
+      return (
+        <section>
+          <Typography variant="body2" color="textPrimary" align="center">
+            {'Made with '}<Heart />{' by '}
+            <Link color="inherit" href="https://github.com/nicolastrote/">
+              {'Nicolas Trote'}
+            </Link>{'.'}
+          </Typography>
+        </section>
+      );
+    }
+
+    function CardRender() {
+      const classes = useStyles();
+      return (
+        <Card className={classes.card}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image="https://picsum.photos/900"
+              title="Nice picture"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2" color="primary">
+                MY SMALL COMPANY
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                "Calm down, Marty, I didn’t disintegrate anything. The molecular structure of Einstein and the car are completely intact. Marty you gotta come back with me. Of course, from a group of Libyan Nationalists. They wanted me to build them a bomb, so I took their plutonium and in turn gave them a shiny bomb case full of used pinball machine parts. Yoo. Yoo."
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Button size="small" color="primary">
+              Share
+        </Button>
+            <Button size="small" color="primary">
+              Learn More
+        </Button>
+          </CardActions>
+        </Card>
+      );
+    }
+
+    function App() {
+      const classes = useStyles();
+      return (
+        <Box flexWrap="nowrap" flexDirection="column" justifyContent="center" className={classes.box}>
+          <Header />
+          <CardRender />
+          <InfoRender />
+          <Copyright />
+        </Box>
+      );
+    }
+
+    ReactDOM.render(
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <App />
+      </ThemeProvider>,
+      document.querySelector('#root'),
+    );
+  </script>
+</body>
+
+</html>
