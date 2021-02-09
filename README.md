@@ -2,6 +2,8 @@
 
 A single page with React and Material UI using CDN.
 
+![alt text](capture.jpg)
+
 ## Table of contents
 
 - [CDN REACT EXAMPLE](#cdn-react-example)

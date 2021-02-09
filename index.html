@@ -79,11 +79,17 @@
         color: theme.palette.custom.pink,
       },
       card: {
+        'align- self': 'center',
+        width: 400,
         backgroundColor: '#fAfAfA',
       },
       media: {
         height: 200,
         width: 400,
+      },
+      wrapperCard: {
+        display: 'flex',
+        justifyContent: 'center'
       }
     }));
 
@@ -141,31 +147,33 @@
     function CardRender() {
       const classes = useStyles();
       return (
-        <Card className={classes.card}>
-          <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image="https://picsum.photos/900"
-              title="Nice picture"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2" color="primary">
-                MY SMALL COMPANY
+        <div className={classes.wrapperCard}>
+          <Card className={classes.card}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image="https://picsum.photos/900"
+                title="Nice picture"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2" color="primary">
+                  MY SMALL COMPANY
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                "Calm down, Marty, I didn’t disintegrate anything. The molecular structure of Einstein and the car are completely intact. Marty you gotta come back with me. Of course, from a group of Libyan Nationalists. They wanted me to build them a bomb, so I took their plutonium and in turn gave them a shiny bomb case full of used pinball machine parts. Yoo. Yoo."
+                <Typography variant="body2" color="textSecondary" component="p">
+                  "Calm down, Marty, I didn’t disintegrate anything. The molecular structure of Einstein and the car are completely intact. Marty you gotta come back with me. Of course, from a group of Libyan Nationalists. They wanted me to build them a bomb, so I took their plutonium and in turn gave them a shiny bomb case full of used pinball machine parts. Yoo. Yoo."
               </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button size="small" color="primary">
-              Share
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button size="small" color="primary">
+                Share
         </Button>
-            <Button size="small" color="primary">
-              Learn More
+              <Button size="small" color="primary">
+                Learn More
         </Button>
-          </CardActions>
-        </Card>
+            </CardActions>
+          </Card>
+        </div>
       );
     }
 
